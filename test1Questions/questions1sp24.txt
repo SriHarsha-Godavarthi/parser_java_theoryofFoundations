@@ -1,0 +1,9 @@
+- Define: a DFA, NFA, NFA-lambda M, and a formal representation of L(M).
+
+- Define: the transition function of a DFA, NFA, NFA-lambda, transition table,
+  the extended transition function of a DFA (recursive definition).
+
+- What is a computation of a DFA on a string w?
+
+- When is w accepted by M?
+

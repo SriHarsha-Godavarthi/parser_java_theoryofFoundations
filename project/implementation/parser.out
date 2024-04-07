@@ -1,0 +1,1329 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+    DEFAULT
+    DO
+    DOT
+    EMPTY
+    FINAL
+    FOR
+    IMPORT
+    LBK
+    MAIN
+    NOT
+    PACKAGE
+    PRINTFUNC
+    PRIVATE
+    PROTECTED
+    PUBLIC
+    RBK
+    STATIC
+    SUPER
+    SWITCH
+    THIS
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> class_declaration
+Rule 2     class_declaration -> CLASS IDENTIFIER LBRA class_body RBRA
+Rule 3     class_body -> method_declaration
+Rule 4     class_body -> field_declaration
+Rule 5     class_body -> empty
+Rule 6     method_declaration -> type IDENTIFIER LPAR parameter_list RPAR LBRA statement RBRA
+Rule 7     statement -> while_statement
+Rule 8     statement -> if_statement
+Rule 9     statement -> assignment_statement
+Rule 10    statement -> method_call_statement
+Rule 11    statement -> block
+Rule 12    block -> LBRA statement RBRA
+Rule 13    while_statement -> WHILE LPAR expression RPAR statement
+Rule 14    if_statement -> IF LPAR expression RPAR statement else_statement
+Rule 15    else_statement -> ELSE statement
+Rule 16    else_statement -> empty
+Rule 17    assignment_statement -> IDENTIFIER ASSIGNMENT expression SEMI_COLON
+Rule 18    method_call_statement -> IDENTIFIER LPAR argument_list RPAR SEMI_COLON
+Rule 19    expression -> expression operator expression
+Rule 20    expression -> LPAR expression RPAR
+Rule 21    expression -> IDENTIFIER
+Rule 22    expression -> NUMBER
+Rule 23    expression -> STRING_LITRAL
+Rule 24    argument_list -> expression
+Rule 25    argument_list -> expression COMMA argument_list
+Rule 26    argument_list -> empty
+Rule 27    return_statement -> RETURN expression SEMI_COLON
+Rule 28    return_statement -> RETURN SEMI_COLON
+Rule 29    field_declaration -> type IDENTIFIER SEMI_COLON
+Rule 30    parameter_list -> type IDENTIFIER
+Rule 31    parameter_list -> type IDENTIFIER COMMA parameter_list
+Rule 32    parameter_list -> empty
+Rule 33    type -> INT
+Rule 34    type -> CHAR
+Rule 35    type -> BOOLEAN
+Rule 36    type -> VOID
+Rule 37    type -> FLOAT
+Rule 38    type -> DOUBLE
+Rule 39    type -> IDENTIFIER
+Rule 40    operator -> PLUS
+Rule 41    operator -> MINUS
+Rule 42    operator -> MULTIPLE
+Rule 43    operator -> DIVIDE
+Rule 44    operator -> LOGICAL_LE
+Rule 45    operator -> LOGICAL_GE
+Rule 46    operator -> LOGICAL_EET
+Rule 47    operator -> LOGICAL_NE
+Rule 48    operator -> LESSER_THEN
+Rule 49    operator -> GREATER_THEN
+Rule 50    operator -> LOGICAL_AND
+Rule 51    operator -> LOGICAL_OR
+Rule 52    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ASSIGNMENT           : 17
+BOOLEAN              : 35
+CHAR                 : 34
+CLASS                : 2
+COMMA                : 25 31
+COMMENT              : 
+DEFAULT              : 
+DIVIDE               : 43
+DO                   : 
+DOT                  : 
+DOUBLE               : 38
+ELSE                 : 15
+EMPTY                : 
+FINAL                : 
+FLOAT                : 37
+FOR                  : 
+GREATER_THEN         : 49
+IDENTIFIER           : 2 6 17 18 21 29 30 31 39
+IF                   : 14
+IMPORT               : 
+INT                  : 33
+LBK                  : 
+LBRA                 : 2 6 12
+LESSER_THEN          : 48
+LOGICAL_AND          : 50
+LOGICAL_EET          : 46
+LOGICAL_GE           : 45
+LOGICAL_LE           : 44
+LOGICAL_NE           : 47
+LOGICAL_OR           : 51
+LPAR                 : 6 13 14 18 20
+MAIN                 : 
+MINUS                : 41
+MULTIPLE             : 42
+NOT                  : 
+NUMBER               : 22
+PACKAGE              : 
+PLUS                 : 40
+PRINTFUNC            : 
+PRIVATE              : 
+PROTECTED            : 
+PUBLIC               : 
+RBK                  : 
+RBRA                 : 2 6 12
+RETURN               : 27 28
+RPAR                 : 6 13 14 18 20
+SEMI_COLON           : 17 18 27 28 29
+STATIC               : 
+STRING_LITRAL        : 23
+SUPER                : 
+SWITCH               : 
+THIS                 : 
+VOID                 : 36
+WHILE                : 13
+error                : 
+
+Nonterminals, with rules where they appear
+
+argument_list        : 18 25
+assignment_statement : 9
+block                : 11
+class_body           : 2
+class_declaration    : 1
+else_statement       : 14
+empty                : 5 16 26 32
+expression           : 13 14 17 19 19 20 24 25 27
+field_declaration    : 4
+if_statement         : 8
+method_call_statement : 10
+method_declaration   : 3
+operator             : 19
+parameter_list       : 6 31
+program              : 0
+return_statement     : 
+statement            : 6 12 13 14 15
+type                 : 6 29 30 31
+while_statement      : 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . class_declaration
+    (2) class_declaration -> . CLASS IDENTIFIER LBRA class_body RBRA
+
+    CLASS           shift and go to state 3
+
+    program                        shift and go to state 1
+    class_declaration              shift and go to state 2
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> class_declaration .
+
+    $end            reduce using rule 1 (program -> class_declaration .)
+
+
+state 3
+
+    (2) class_declaration -> CLASS . IDENTIFIER LBRA class_body RBRA
+
+    IDENTIFIER      shift and go to state 4
+
+
+state 4
+
+    (2) class_declaration -> CLASS IDENTIFIER . LBRA class_body RBRA
+
+    LBRA            shift and go to state 5
+
+
+state 5
+
+    (2) class_declaration -> CLASS IDENTIFIER LBRA . class_body RBRA
+    (3) class_body -> . method_declaration
+    (4) class_body -> . field_declaration
+    (5) class_body -> . empty
+    (6) method_declaration -> . type IDENTIFIER LPAR parameter_list RPAR LBRA statement RBRA
+    (29) field_declaration -> . type IDENTIFIER SEMI_COLON
+    (52) empty -> .
+    (33) type -> . INT
+    (34) type -> . CHAR
+    (35) type -> . BOOLEAN
+    (36) type -> . VOID
+    (37) type -> . FLOAT
+    (38) type -> . DOUBLE
+    (39) type -> . IDENTIFIER
+
+    RBRA            reduce using rule 52 (empty -> .)
+    INT             shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOLEAN         shift and go to state 14
+    VOID            shift and go to state 15
+    FLOAT           shift and go to state 16
+    DOUBLE          shift and go to state 17
+    IDENTIFIER      shift and go to state 6
+
+    class_body                     shift and go to state 7
+    method_declaration             shift and go to state 8
+    field_declaration              shift and go to state 9
+    empty                          shift and go to state 10
+    type                           shift and go to state 11
+
+state 6
+
+    (39) type -> IDENTIFIER .
+
+    IDENTIFIER      reduce using rule 39 (type -> IDENTIFIER .)
+
+
+state 7
+
+    (2) class_declaration -> CLASS IDENTIFIER LBRA class_body . RBRA
+
+    RBRA            shift and go to state 18
+
+
+state 8
+
+    (3) class_body -> method_declaration .
+
+    RBRA            reduce using rule 3 (class_body -> method_declaration .)
+
+
+state 9
+
+    (4) class_body -> field_declaration .
+
+    RBRA            reduce using rule 4 (class_body -> field_declaration .)
+
+
+state 10
+
+    (5) class_body -> empty .
+
+    RBRA            reduce using rule 5 (class_body -> empty .)
+
+
+state 11
+
+    (6) method_declaration -> type . IDENTIFIER LPAR parameter_list RPAR LBRA statement RBRA
+    (29) field_declaration -> type . IDENTIFIER SEMI_COLON
+
+    IDENTIFIER      shift and go to state 19
+
+
+state 12
+
+    (33) type -> INT .
+
+    IDENTIFIER      reduce using rule 33 (type -> INT .)
+
+
+state 13
+
+    (34) type -> CHAR .
+
+    IDENTIFIER      reduce using rule 34 (type -> CHAR .)
+
+
+state 14
+
+    (35) type -> BOOLEAN .
+
+    IDENTIFIER      reduce using rule 35 (type -> BOOLEAN .)
+
+
+state 15
+
+    (36) type -> VOID .
+
+    IDENTIFIER      reduce using rule 36 (type -> VOID .)
+
+
+state 16
+
+    (37) type -> FLOAT .
+
+    IDENTIFIER      reduce using rule 37 (type -> FLOAT .)
+
+
+state 17
+
+    (38) type -> DOUBLE .
+
+    IDENTIFIER      reduce using rule 38 (type -> DOUBLE .)
+
+
+state 18
+
+    (2) class_declaration -> CLASS IDENTIFIER LBRA class_body RBRA .
+
+    $end            reduce using rule 2 (class_declaration -> CLASS IDENTIFIER LBRA class_body RBRA .)
+
+
+state 19
+
+    (6) method_declaration -> type IDENTIFIER . LPAR parameter_list RPAR LBRA statement RBRA
+    (29) field_declaration -> type IDENTIFIER . SEMI_COLON
+
+    LPAR            shift and go to state 20
+    SEMI_COLON      shift and go to state 21
+
+
+state 20
+
+    (6) method_declaration -> type IDENTIFIER LPAR . parameter_list RPAR LBRA statement RBRA
+    (30) parameter_list -> . type IDENTIFIER
+    (31) parameter_list -> . type IDENTIFIER COMMA parameter_list
+    (32) parameter_list -> . empty
+    (33) type -> . INT
+    (34) type -> . CHAR
+    (35) type -> . BOOLEAN
+    (36) type -> . VOID
+    (37) type -> . FLOAT
+    (38) type -> . DOUBLE
+    (39) type -> . IDENTIFIER
+    (52) empty -> .
+
+    INT             shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOLEAN         shift and go to state 14
+    VOID            shift and go to state 15
+    FLOAT           shift and go to state 16
+    DOUBLE          shift and go to state 17
+    IDENTIFIER      shift and go to state 6
+    RPAR            reduce using rule 52 (empty -> .)
+
+    type                           shift and go to state 22
+    parameter_list                 shift and go to state 23
+    empty                          shift and go to state 24
+
+state 21
+
+    (29) field_declaration -> type IDENTIFIER SEMI_COLON .
+
+    RBRA            reduce using rule 29 (field_declaration -> type IDENTIFIER SEMI_COLON .)
+
+
+state 22
+
+    (30) parameter_list -> type . IDENTIFIER
+    (31) parameter_list -> type . IDENTIFIER COMMA parameter_list
+
+    IDENTIFIER      shift and go to state 25
+
+
+state 23
+
+    (6) method_declaration -> type IDENTIFIER LPAR parameter_list . RPAR LBRA statement RBRA
+
+    RPAR            shift and go to state 26
+
+
+state 24
+
+    (32) parameter_list -> empty .
+
+    RPAR            reduce using rule 32 (parameter_list -> empty .)
+
+
+state 25
+
+    (30) parameter_list -> type IDENTIFIER .
+    (31) parameter_list -> type IDENTIFIER . COMMA parameter_list
+
+    RPAR            reduce using rule 30 (parameter_list -> type IDENTIFIER .)
+    COMMA           shift and go to state 27
+
+
+state 26
+
+    (6) method_declaration -> type IDENTIFIER LPAR parameter_list RPAR . LBRA statement RBRA
+
+    LBRA            shift and go to state 28
+
+
+state 27
+
+    (31) parameter_list -> type IDENTIFIER COMMA . parameter_list
+    (30) parameter_list -> . type IDENTIFIER
+    (31) parameter_list -> . type IDENTIFIER COMMA parameter_list
+    (32) parameter_list -> . empty
+    (33) type -> . INT
+    (34) type -> . CHAR
+    (35) type -> . BOOLEAN
+    (36) type -> . VOID
+    (37) type -> . FLOAT
+    (38) type -> . DOUBLE
+    (39) type -> . IDENTIFIER
+    (52) empty -> .
+
+    INT             shift and go to state 12
+    CHAR            shift and go to state 13
+    BOOLEAN         shift and go to state 14
+    VOID            shift and go to state 15
+    FLOAT           shift and go to state 16
+    DOUBLE          shift and go to state 17
+    IDENTIFIER      shift and go to state 6
+    RPAR            reduce using rule 52 (empty -> .)
+
+    type                           shift and go to state 22
+    parameter_list                 shift and go to state 29
+    empty                          shift and go to state 24
+
+state 28
+
+    (6) method_declaration -> type IDENTIFIER LPAR parameter_list RPAR LBRA . statement RBRA
+    (7) statement -> . while_statement
+    (8) statement -> . if_statement
+    (9) statement -> . assignment_statement
+    (10) statement -> . method_call_statement
+    (11) statement -> . block
+    (13) while_statement -> . WHILE LPAR expression RPAR statement
+    (14) if_statement -> . IF LPAR expression RPAR statement else_statement
+    (17) assignment_statement -> . IDENTIFIER ASSIGNMENT expression SEMI_COLON
+    (18) method_call_statement -> . IDENTIFIER LPAR argument_list RPAR SEMI_COLON
+    (12) block -> . LBRA statement RBRA
+
+    WHILE           shift and go to state 38
+    IF              shift and go to state 39
+    IDENTIFIER      shift and go to state 30
+    LBRA            shift and go to state 31
+
+    statement                      shift and go to state 32
+    while_statement                shift and go to state 33
+    if_statement                   shift and go to state 34
+    assignment_statement           shift and go to state 35
+    method_call_statement          shift and go to state 36
+    block                          shift and go to state 37
+
+state 29
+
+    (31) parameter_list -> type IDENTIFIER COMMA parameter_list .
+
+    RPAR            reduce using rule 31 (parameter_list -> type IDENTIFIER COMMA parameter_list .)
+
+
+state 30
+
+    (17) assignment_statement -> IDENTIFIER . ASSIGNMENT expression SEMI_COLON
+    (18) method_call_statement -> IDENTIFIER . LPAR argument_list RPAR SEMI_COLON
+
+    ASSIGNMENT      shift and go to state 40
+    LPAR            shift and go to state 41
+
+
+state 31
+
+    (12) block -> LBRA . statement RBRA
+    (7) statement -> . while_statement
+    (8) statement -> . if_statement
+    (9) statement -> . assignment_statement
+    (10) statement -> . method_call_statement
+    (11) statement -> . block
+    (13) while_statement -> . WHILE LPAR expression RPAR statement
+    (14) if_statement -> . IF LPAR expression RPAR statement else_statement
+    (17) assignment_statement -> . IDENTIFIER ASSIGNMENT expression SEMI_COLON
+    (18) method_call_statement -> . IDENTIFIER LPAR argument_list RPAR SEMI_COLON
+    (12) block -> . LBRA statement RBRA
+
+    WHILE           shift and go to state 38
+    IF              shift and go to state 39
+    IDENTIFIER      shift and go to state 30
+    LBRA            shift and go to state 31
+
+    statement                      shift and go to state 42
+    while_statement                shift and go to state 33
+    if_statement                   shift and go to state 34
+    assignment_statement           shift and go to state 35
+    method_call_statement          shift and go to state 36
+    block                          shift and go to state 37
+
+state 32
+
+    (6) method_declaration -> type IDENTIFIER LPAR parameter_list RPAR LBRA statement . RBRA
+
+    RBRA            shift and go to state 43
+
+
+state 33
+
+    (7) statement -> while_statement .
+
+    RBRA            reduce using rule 7 (statement -> while_statement .)
+    ELSE            reduce using rule 7 (statement -> while_statement .)
+
+
+state 34
+
+    (8) statement -> if_statement .
+
+    RBRA            reduce using rule 8 (statement -> if_statement .)
+    ELSE            reduce using rule 8 (statement -> if_statement .)
+
+
+state 35
+
+    (9) statement -> assignment_statement .
+
+    RBRA            reduce using rule 9 (statement -> assignment_statement .)
+    ELSE            reduce using rule 9 (statement -> assignment_statement .)
+
+
+state 36
+
+    (10) statement -> method_call_statement .
+
+    RBRA            reduce using rule 10 (statement -> method_call_statement .)
+    ELSE            reduce using rule 10 (statement -> method_call_statement .)
+
+
+state 37
+
+    (11) statement -> block .
+
+    RBRA            reduce using rule 11 (statement -> block .)
+    ELSE            reduce using rule 11 (statement -> block .)
+
+
+state 38
+
+    (13) while_statement -> WHILE . LPAR expression RPAR statement
+
+    LPAR            shift and go to state 44
+
+
+state 39
+
+    (14) if_statement -> IF . LPAR expression RPAR statement else_statement
+
+    LPAR            shift and go to state 45
+
+
+state 40
+
+    (17) assignment_statement -> IDENTIFIER ASSIGNMENT . expression SEMI_COLON
+    (19) expression -> . expression operator expression
+    (20) expression -> . LPAR expression RPAR
+    (21) expression -> . IDENTIFIER
+    (22) expression -> . NUMBER
+    (23) expression -> . STRING_LITRAL
+
+    LPAR            shift and go to state 48
+    IDENTIFIER      shift and go to state 46
+    NUMBER          shift and go to state 49
+    STRING_LITRAL   shift and go to state 50
+
+    expression                     shift and go to state 47
+
+state 41
+
+    (18) method_call_statement -> IDENTIFIER LPAR . argument_list RPAR SEMI_COLON
+    (24) argument_list -> . expression
+    (25) argument_list -> . expression COMMA argument_list
+    (26) argument_list -> . empty
+    (19) expression -> . expression operator expression
+    (20) expression -> . LPAR expression RPAR
+    (21) expression -> . IDENTIFIER
+    (22) expression -> . NUMBER
+    (23) expression -> . STRING_LITRAL
+    (52) empty -> .
+
+    LPAR            shift and go to state 48
+    IDENTIFIER      shift and go to state 46
+    NUMBER          shift and go to state 49
+    STRING_LITRAL   shift and go to state 50
+    RPAR            reduce using rule 52 (empty -> .)
+
+    argument_list                  shift and go to state 51
+    expression                     shift and go to state 52
+    empty                          shift and go to state 53
+
+state 42
+
+    (12) block -> LBRA statement . RBRA
+
+    RBRA            shift and go to state 54
+
+
+state 43
+
+    (6) method_declaration -> type IDENTIFIER LPAR parameter_list RPAR LBRA statement RBRA .
+
+    RBRA            reduce using rule 6 (method_declaration -> type IDENTIFIER LPAR parameter_list RPAR LBRA statement RBRA .)
+
+
+state 44
+
+    (13) while_statement -> WHILE LPAR . expression RPAR statement
+    (19) expression -> . expression operator expression
+    (20) expression -> . LPAR expression RPAR
+    (21) expression -> . IDENTIFIER
+    (22) expression -> . NUMBER
+    (23) expression -> . STRING_LITRAL
+
+    LPAR            shift and go to state 48
+    IDENTIFIER      shift and go to state 46
+    NUMBER          shift and go to state 49
+    STRING_LITRAL   shift and go to state 50
+
+    expression                     shift and go to state 55
+
+state 45
+
+    (14) if_statement -> IF LPAR . expression RPAR statement else_statement
+    (19) expression -> . expression operator expression
+    (20) expression -> . LPAR expression RPAR
+    (21) expression -> . IDENTIFIER
+    (22) expression -> . NUMBER
+    (23) expression -> . STRING_LITRAL
+
+    LPAR            shift and go to state 48
+    IDENTIFIER      shift and go to state 46
+    NUMBER          shift and go to state 49
+    STRING_LITRAL   shift and go to state 50
+
+    expression                     shift and go to state 56
+
+state 46
+
+    (21) expression -> IDENTIFIER .
+
+    SEMI_COLON      reduce using rule 21 (expression -> IDENTIFIER .)
+    PLUS            reduce using rule 21 (expression -> IDENTIFIER .)
+    MINUS           reduce using rule 21 (expression -> IDENTIFIER .)
+    MULTIPLE        reduce using rule 21 (expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 21 (expression -> IDENTIFIER .)
+    LOGICAL_LE      reduce using rule 21 (expression -> IDENTIFIER .)
+    LOGICAL_GE      reduce using rule 21 (expression -> IDENTIFIER .)
+    LOGICAL_EET     reduce using rule 21 (expression -> IDENTIFIER .)
+    LOGICAL_NE      reduce using rule 21 (expression -> IDENTIFIER .)
+    LESSER_THEN     reduce using rule 21 (expression -> IDENTIFIER .)
+    GREATER_THEN    reduce using rule 21 (expression -> IDENTIFIER .)
+    LOGICAL_AND     reduce using rule 21 (expression -> IDENTIFIER .)
+    LOGICAL_OR      reduce using rule 21 (expression -> IDENTIFIER .)
+    COMMA           reduce using rule 21 (expression -> IDENTIFIER .)
+    RPAR            reduce using rule 21 (expression -> IDENTIFIER .)
+
+
+state 47
+
+    (17) assignment_statement -> IDENTIFIER ASSIGNMENT expression . SEMI_COLON
+    (19) expression -> expression . operator expression
+    (40) operator -> . PLUS
+    (41) operator -> . MINUS
+    (42) operator -> . MULTIPLE
+    (43) operator -> . DIVIDE
+    (44) operator -> . LOGICAL_LE
+    (45) operator -> . LOGICAL_GE
+    (46) operator -> . LOGICAL_EET
+    (47) operator -> . LOGICAL_NE
+    (48) operator -> . LESSER_THEN
+    (49) operator -> . GREATER_THEN
+    (50) operator -> . LOGICAL_AND
+    (51) operator -> . LOGICAL_OR
+
+    SEMI_COLON      shift and go to state 57
+    PLUS            shift and go to state 59
+    MINUS           shift and go to state 60
+    MULTIPLE        shift and go to state 61
+    DIVIDE          shift and go to state 62
+    LOGICAL_LE      shift and go to state 63
+    LOGICAL_GE      shift and go to state 64
+    LOGICAL_EET     shift and go to state 65
+    LOGICAL_NE      shift and go to state 66
+    LESSER_THEN     shift and go to state 67
+    GREATER_THEN    shift and go to state 68
+    LOGICAL_AND     shift and go to state 69
+    LOGICAL_OR      shift and go to state 70
+
+    operator                       shift and go to state 58
+
+state 48
+
+    (20) expression -> LPAR . expression RPAR
+    (19) expression -> . expression operator expression
+    (20) expression -> . LPAR expression RPAR
+    (21) expression -> . IDENTIFIER
+    (22) expression -> . NUMBER
+    (23) expression -> . STRING_LITRAL
+
+    LPAR            shift and go to state 48
+    IDENTIFIER      shift and go to state 46
+    NUMBER          shift and go to state 49
+    STRING_LITRAL   shift and go to state 50
+
+    expression                     shift and go to state 71
+
+state 49
+
+    (22) expression -> NUMBER .
+
+    SEMI_COLON      reduce using rule 22 (expression -> NUMBER .)
+    PLUS            reduce using rule 22 (expression -> NUMBER .)
+    MINUS           reduce using rule 22 (expression -> NUMBER .)
+    MULTIPLE        reduce using rule 22 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 22 (expression -> NUMBER .)
+    LOGICAL_LE      reduce using rule 22 (expression -> NUMBER .)
+    LOGICAL_GE      reduce using rule 22 (expression -> NUMBER .)
+    LOGICAL_EET     reduce using rule 22 (expression -> NUMBER .)
+    LOGICAL_NE      reduce using rule 22 (expression -> NUMBER .)
+    LESSER_THEN     reduce using rule 22 (expression -> NUMBER .)
+    GREATER_THEN    reduce using rule 22 (expression -> NUMBER .)
+    LOGICAL_AND     reduce using rule 22 (expression -> NUMBER .)
+    LOGICAL_OR      reduce using rule 22 (expression -> NUMBER .)
+    COMMA           reduce using rule 22 (expression -> NUMBER .)
+    RPAR            reduce using rule 22 (expression -> NUMBER .)
+
+
+state 50
+
+    (23) expression -> STRING_LITRAL .
+
+    SEMI_COLON      reduce using rule 23 (expression -> STRING_LITRAL .)
+    PLUS            reduce using rule 23 (expression -> STRING_LITRAL .)
+    MINUS           reduce using rule 23 (expression -> STRING_LITRAL .)
+    MULTIPLE        reduce using rule 23 (expression -> STRING_LITRAL .)
+    DIVIDE          reduce using rule 23 (expression -> STRING_LITRAL .)
+    LOGICAL_LE      reduce using rule 23 (expression -> STRING_LITRAL .)
+    LOGICAL_GE      reduce using rule 23 (expression -> STRING_LITRAL .)
+    LOGICAL_EET     reduce using rule 23 (expression -> STRING_LITRAL .)
+    LOGICAL_NE      reduce using rule 23 (expression -> STRING_LITRAL .)
+    LESSER_THEN     reduce using rule 23 (expression -> STRING_LITRAL .)
+    GREATER_THEN    reduce using rule 23 (expression -> STRING_LITRAL .)
+    LOGICAL_AND     reduce using rule 23 (expression -> STRING_LITRAL .)
+    LOGICAL_OR      reduce using rule 23 (expression -> STRING_LITRAL .)
+    COMMA           reduce using rule 23 (expression -> STRING_LITRAL .)
+    RPAR            reduce using rule 23 (expression -> STRING_LITRAL .)
+
+
+state 51
+
+    (18) method_call_statement -> IDENTIFIER LPAR argument_list . RPAR SEMI_COLON
+
+    RPAR            shift and go to state 72
+
+
+state 52
+
+    (24) argument_list -> expression .
+    (25) argument_list -> expression . COMMA argument_list
+    (19) expression -> expression . operator expression
+    (40) operator -> . PLUS
+    (41) operator -> . MINUS
+    (42) operator -> . MULTIPLE
+    (43) operator -> . DIVIDE
+    (44) operator -> . LOGICAL_LE
+    (45) operator -> . LOGICAL_GE
+    (46) operator -> . LOGICAL_EET
+    (47) operator -> . LOGICAL_NE
+    (48) operator -> . LESSER_THEN
+    (49) operator -> . GREATER_THEN
+    (50) operator -> . LOGICAL_AND
+    (51) operator -> . LOGICAL_OR
+
+    RPAR            reduce using rule 24 (argument_list -> expression .)
+    COMMA           shift and go to state 73
+    PLUS            shift and go to state 59
+    MINUS           shift and go to state 60
+    MULTIPLE        shift and go to state 61
+    DIVIDE          shift and go to state 62
+    LOGICAL_LE      shift and go to state 63
+    LOGICAL_GE      shift and go to state 64
+    LOGICAL_EET     shift and go to state 65
+    LOGICAL_NE      shift and go to state 66
+    LESSER_THEN     shift and go to state 67
+    GREATER_THEN    shift and go to state 68
+    LOGICAL_AND     shift and go to state 69
+    LOGICAL_OR      shift and go to state 70
+
+    operator                       shift and go to state 58
+
+state 53
+
+    (26) argument_list -> empty .
+
+    RPAR            reduce using rule 26 (argument_list -> empty .)
+
+
+state 54
+
+    (12) block -> LBRA statement RBRA .
+
+    RBRA            reduce using rule 12 (block -> LBRA statement RBRA .)
+    ELSE            reduce using rule 12 (block -> LBRA statement RBRA .)
+
+
+state 55
+
+    (13) while_statement -> WHILE LPAR expression . RPAR statement
+    (19) expression -> expression . operator expression
+    (40) operator -> . PLUS
+    (41) operator -> . MINUS
+    (42) operator -> . MULTIPLE
+    (43) operator -> . DIVIDE
+    (44) operator -> . LOGICAL_LE
+    (45) operator -> . LOGICAL_GE
+    (46) operator -> . LOGICAL_EET
+    (47) operator -> . LOGICAL_NE
+    (48) operator -> . LESSER_THEN
+    (49) operator -> . GREATER_THEN
+    (50) operator -> . LOGICAL_AND
+    (51) operator -> . LOGICAL_OR
+
+    RPAR            shift and go to state 74
+    PLUS            shift and go to state 59
+    MINUS           shift and go to state 60
+    MULTIPLE        shift and go to state 61
+    DIVIDE          shift and go to state 62
+    LOGICAL_LE      shift and go to state 63
+    LOGICAL_GE      shift and go to state 64
+    LOGICAL_EET     shift and go to state 65
+    LOGICAL_NE      shift and go to state 66
+    LESSER_THEN     shift and go to state 67
+    GREATER_THEN    shift and go to state 68
+    LOGICAL_AND     shift and go to state 69
+    LOGICAL_OR      shift and go to state 70
+
+    operator                       shift and go to state 58
+
+state 56
+
+    (14) if_statement -> IF LPAR expression . RPAR statement else_statement
+    (19) expression -> expression . operator expression
+    (40) operator -> . PLUS
+    (41) operator -> . MINUS
+    (42) operator -> . MULTIPLE
+    (43) operator -> . DIVIDE
+    (44) operator -> . LOGICAL_LE
+    (45) operator -> . LOGICAL_GE
+    (46) operator -> . LOGICAL_EET
+    (47) operator -> . LOGICAL_NE
+    (48) operator -> . LESSER_THEN
+    (49) operator -> . GREATER_THEN
+    (50) operator -> . LOGICAL_AND
+    (51) operator -> . LOGICAL_OR
+
+    RPAR            shift and go to state 75
+    PLUS            shift and go to state 59
+    MINUS           shift and go to state 60
+    MULTIPLE        shift and go to state 61
+    DIVIDE          shift and go to state 62
+    LOGICAL_LE      shift and go to state 63
+    LOGICAL_GE      shift and go to state 64
+    LOGICAL_EET     shift and go to state 65
+    LOGICAL_NE      shift and go to state 66
+    LESSER_THEN     shift and go to state 67
+    GREATER_THEN    shift and go to state 68
+    LOGICAL_AND     shift and go to state 69
+    LOGICAL_OR      shift and go to state 70
+
+    operator                       shift and go to state 58
+
+state 57
+
+    (17) assignment_statement -> IDENTIFIER ASSIGNMENT expression SEMI_COLON .
+
+    RBRA            reduce using rule 17 (assignment_statement -> IDENTIFIER ASSIGNMENT expression SEMI_COLON .)
+    ELSE            reduce using rule 17 (assignment_statement -> IDENTIFIER ASSIGNMENT expression SEMI_COLON .)
+
+
+state 58
+
+    (19) expression -> expression operator . expression
+    (19) expression -> . expression operator expression
+    (20) expression -> . LPAR expression RPAR
+    (21) expression -> . IDENTIFIER
+    (22) expression -> . NUMBER
+    (23) expression -> . STRING_LITRAL
+
+    LPAR            shift and go to state 48
+    IDENTIFIER      shift and go to state 46
+    NUMBER          shift and go to state 49
+    STRING_LITRAL   shift and go to state 50
+
+    expression                     shift and go to state 76
+
+state 59
+
+    (40) operator -> PLUS .
+
+    LPAR            reduce using rule 40 (operator -> PLUS .)
+    IDENTIFIER      reduce using rule 40 (operator -> PLUS .)
+    NUMBER          reduce using rule 40 (operator -> PLUS .)
+    STRING_LITRAL   reduce using rule 40 (operator -> PLUS .)
+
+
+state 60
+
+    (41) operator -> MINUS .
+
+    LPAR            reduce using rule 41 (operator -> MINUS .)
+    IDENTIFIER      reduce using rule 41 (operator -> MINUS .)
+    NUMBER          reduce using rule 41 (operator -> MINUS .)
+    STRING_LITRAL   reduce using rule 41 (operator -> MINUS .)
+
+
+state 61
+
+    (42) operator -> MULTIPLE .
+
+    LPAR            reduce using rule 42 (operator -> MULTIPLE .)
+    IDENTIFIER      reduce using rule 42 (operator -> MULTIPLE .)
+    NUMBER          reduce using rule 42 (operator -> MULTIPLE .)
+    STRING_LITRAL   reduce using rule 42 (operator -> MULTIPLE .)
+
+
+state 62
+
+    (43) operator -> DIVIDE .
+
+    LPAR            reduce using rule 43 (operator -> DIVIDE .)
+    IDENTIFIER      reduce using rule 43 (operator -> DIVIDE .)
+    NUMBER          reduce using rule 43 (operator -> DIVIDE .)
+    STRING_LITRAL   reduce using rule 43 (operator -> DIVIDE .)
+
+
+state 63
+
+    (44) operator -> LOGICAL_LE .
+
+    LPAR            reduce using rule 44 (operator -> LOGICAL_LE .)
+    IDENTIFIER      reduce using rule 44 (operator -> LOGICAL_LE .)
+    NUMBER          reduce using rule 44 (operator -> LOGICAL_LE .)
+    STRING_LITRAL   reduce using rule 44 (operator -> LOGICAL_LE .)
+
+
+state 64
+
+    (45) operator -> LOGICAL_GE .
+
+    LPAR            reduce using rule 45 (operator -> LOGICAL_GE .)
+    IDENTIFIER      reduce using rule 45 (operator -> LOGICAL_GE .)
+    NUMBER          reduce using rule 45 (operator -> LOGICAL_GE .)
+    STRING_LITRAL   reduce using rule 45 (operator -> LOGICAL_GE .)
+
+
+state 65
+
+    (46) operator -> LOGICAL_EET .
+
+    LPAR            reduce using rule 46 (operator -> LOGICAL_EET .)
+    IDENTIFIER      reduce using rule 46 (operator -> LOGICAL_EET .)
+    NUMBER          reduce using rule 46 (operator -> LOGICAL_EET .)
+    STRING_LITRAL   reduce using rule 46 (operator -> LOGICAL_EET .)
+
+
+state 66
+
+    (47) operator -> LOGICAL_NE .
+
+    LPAR            reduce using rule 47 (operator -> LOGICAL_NE .)
+    IDENTIFIER      reduce using rule 47 (operator -> LOGICAL_NE .)
+    NUMBER          reduce using rule 47 (operator -> LOGICAL_NE .)
+    STRING_LITRAL   reduce using rule 47 (operator -> LOGICAL_NE .)
+
+
+state 67
+
+    (48) operator -> LESSER_THEN .
+
+    LPAR            reduce using rule 48 (operator -> LESSER_THEN .)
+    IDENTIFIER      reduce using rule 48 (operator -> LESSER_THEN .)
+    NUMBER          reduce using rule 48 (operator -> LESSER_THEN .)
+    STRING_LITRAL   reduce using rule 48 (operator -> LESSER_THEN .)
+
+
+state 68
+
+    (49) operator -> GREATER_THEN .
+
+    LPAR            reduce using rule 49 (operator -> GREATER_THEN .)
+    IDENTIFIER      reduce using rule 49 (operator -> GREATER_THEN .)
+    NUMBER          reduce using rule 49 (operator -> GREATER_THEN .)
+    STRING_LITRAL   reduce using rule 49 (operator -> GREATER_THEN .)
+
+
+state 69
+
+    (50) operator -> LOGICAL_AND .
+
+    LPAR            reduce using rule 50 (operator -> LOGICAL_AND .)
+    IDENTIFIER      reduce using rule 50 (operator -> LOGICAL_AND .)
+    NUMBER          reduce using rule 50 (operator -> LOGICAL_AND .)
+    STRING_LITRAL   reduce using rule 50 (operator -> LOGICAL_AND .)
+
+
+state 70
+
+    (51) operator -> LOGICAL_OR .
+
+    LPAR            reduce using rule 51 (operator -> LOGICAL_OR .)
+    IDENTIFIER      reduce using rule 51 (operator -> LOGICAL_OR .)
+    NUMBER          reduce using rule 51 (operator -> LOGICAL_OR .)
+    STRING_LITRAL   reduce using rule 51 (operator -> LOGICAL_OR .)
+
+
+state 71
+
+    (20) expression -> LPAR expression . RPAR
+    (19) expression -> expression . operator expression
+    (40) operator -> . PLUS
+    (41) operator -> . MINUS
+    (42) operator -> . MULTIPLE
+    (43) operator -> . DIVIDE
+    (44) operator -> . LOGICAL_LE
+    (45) operator -> . LOGICAL_GE
+    (46) operator -> . LOGICAL_EET
+    (47) operator -> . LOGICAL_NE
+    (48) operator -> . LESSER_THEN
+    (49) operator -> . GREATER_THEN
+    (50) operator -> . LOGICAL_AND
+    (51) operator -> . LOGICAL_OR
+
+    RPAR            shift and go to state 77
+    PLUS            shift and go to state 59
+    MINUS           shift and go to state 60
+    MULTIPLE        shift and go to state 61
+    DIVIDE          shift and go to state 62
+    LOGICAL_LE      shift and go to state 63
+    LOGICAL_GE      shift and go to state 64
+    LOGICAL_EET     shift and go to state 65
+    LOGICAL_NE      shift and go to state 66
+    LESSER_THEN     shift and go to state 67
+    GREATER_THEN    shift and go to state 68
+    LOGICAL_AND     shift and go to state 69
+    LOGICAL_OR      shift and go to state 70
+
+    operator                       shift and go to state 58
+
+state 72
+
+    (18) method_call_statement -> IDENTIFIER LPAR argument_list RPAR . SEMI_COLON
+
+    SEMI_COLON      shift and go to state 78
+
+
+state 73
+
+    (25) argument_list -> expression COMMA . argument_list
+    (24) argument_list -> . expression
+    (25) argument_list -> . expression COMMA argument_list
+    (26) argument_list -> . empty
+    (19) expression -> . expression operator expression
+    (20) expression -> . LPAR expression RPAR
+    (21) expression -> . IDENTIFIER
+    (22) expression -> . NUMBER
+    (23) expression -> . STRING_LITRAL
+    (52) empty -> .
+
+    LPAR            shift and go to state 48
+    IDENTIFIER      shift and go to state 46
+    NUMBER          shift and go to state 49
+    STRING_LITRAL   shift and go to state 50
+    RPAR            reduce using rule 52 (empty -> .)
+
+    expression                     shift and go to state 52
+    argument_list                  shift and go to state 79
+    empty                          shift and go to state 53
+
+state 74
+
+    (13) while_statement -> WHILE LPAR expression RPAR . statement
+    (7) statement -> . while_statement
+    (8) statement -> . if_statement
+    (9) statement -> . assignment_statement
+    (10) statement -> . method_call_statement
+    (11) statement -> . block
+    (13) while_statement -> . WHILE LPAR expression RPAR statement
+    (14) if_statement -> . IF LPAR expression RPAR statement else_statement
+    (17) assignment_statement -> . IDENTIFIER ASSIGNMENT expression SEMI_COLON
+    (18) method_call_statement -> . IDENTIFIER LPAR argument_list RPAR SEMI_COLON
+    (12) block -> . LBRA statement RBRA
+
+    WHILE           shift and go to state 38
+    IF              shift and go to state 39
+    IDENTIFIER      shift and go to state 30
+    LBRA            shift and go to state 31
+
+    statement                      shift and go to state 80
+    while_statement                shift and go to state 33
+    if_statement                   shift and go to state 34
+    assignment_statement           shift and go to state 35
+    method_call_statement          shift and go to state 36
+    block                          shift and go to state 37
+
+state 75
+
+    (14) if_statement -> IF LPAR expression RPAR . statement else_statement
+    (7) statement -> . while_statement
+    (8) statement -> . if_statement
+    (9) statement -> . assignment_statement
+    (10) statement -> . method_call_statement
+    (11) statement -> . block
+    (13) while_statement -> . WHILE LPAR expression RPAR statement
+    (14) if_statement -> . IF LPAR expression RPAR statement else_statement
+    (17) assignment_statement -> . IDENTIFIER ASSIGNMENT expression SEMI_COLON
+    (18) method_call_statement -> . IDENTIFIER LPAR argument_list RPAR SEMI_COLON
+    (12) block -> . LBRA statement RBRA
+
+    WHILE           shift and go to state 38
+    IF              shift and go to state 39
+    IDENTIFIER      shift and go to state 30
+    LBRA            shift and go to state 31
+
+    statement                      shift and go to state 81
+    while_statement                shift and go to state 33
+    if_statement                   shift and go to state 34
+    assignment_statement           shift and go to state 35
+    method_call_statement          shift and go to state 36
+    block                          shift and go to state 37
+
+state 76
+
+    (19) expression -> expression operator expression .
+    (19) expression -> expression . operator expression
+    (40) operator -> . PLUS
+    (41) operator -> . MINUS
+    (42) operator -> . MULTIPLE
+    (43) operator -> . DIVIDE
+    (44) operator -> . LOGICAL_LE
+    (45) operator -> . LOGICAL_GE
+    (46) operator -> . LOGICAL_EET
+    (47) operator -> . LOGICAL_NE
+    (48) operator -> . LESSER_THEN
+    (49) operator -> . GREATER_THEN
+    (50) operator -> . LOGICAL_AND
+    (51) operator -> . LOGICAL_OR
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MULTIPLE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for LOGICAL_LE resolved as shift
+  ! shift/reduce conflict for LOGICAL_GE resolved as shift
+  ! shift/reduce conflict for LOGICAL_EET resolved as shift
+  ! shift/reduce conflict for LOGICAL_NE resolved as shift
+  ! shift/reduce conflict for LESSER_THEN resolved as shift
+  ! shift/reduce conflict for GREATER_THEN resolved as shift
+  ! shift/reduce conflict for LOGICAL_AND resolved as shift
+  ! shift/reduce conflict for LOGICAL_OR resolved as shift
+    SEMI_COLON      reduce using rule 19 (expression -> expression operator expression .)
+    COMMA           reduce using rule 19 (expression -> expression operator expression .)
+    RPAR            reduce using rule 19 (expression -> expression operator expression .)
+    PLUS            shift and go to state 59
+    MINUS           shift and go to state 60
+    MULTIPLE        shift and go to state 61
+    DIVIDE          shift and go to state 62
+    LOGICAL_LE      shift and go to state 63
+    LOGICAL_GE      shift and go to state 64
+    LOGICAL_EET     shift and go to state 65
+    LOGICAL_NE      shift and go to state 66
+    LESSER_THEN     shift and go to state 67
+    GREATER_THEN    shift and go to state 68
+    LOGICAL_AND     shift and go to state 69
+    LOGICAL_OR      shift and go to state 70
+
+  ! PLUS            [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! MINUS           [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! MULTIPLE        [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! DIVIDE          [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! LOGICAL_LE      [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! LOGICAL_GE      [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! LOGICAL_EET     [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! LOGICAL_NE      [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! LESSER_THEN     [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! GREATER_THEN    [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! LOGICAL_AND     [ reduce using rule 19 (expression -> expression operator expression .) ]
+  ! LOGICAL_OR      [ reduce using rule 19 (expression -> expression operator expression .) ]
+
+    operator                       shift and go to state 58
+
+state 77
+
+    (20) expression -> LPAR expression RPAR .
+
+    SEMI_COLON      reduce using rule 20 (expression -> LPAR expression RPAR .)
+    PLUS            reduce using rule 20 (expression -> LPAR expression RPAR .)
+    MINUS           reduce using rule 20 (expression -> LPAR expression RPAR .)
+    MULTIPLE        reduce using rule 20 (expression -> LPAR expression RPAR .)
+    DIVIDE          reduce using rule 20 (expression -> LPAR expression RPAR .)
+    LOGICAL_LE      reduce using rule 20 (expression -> LPAR expression RPAR .)
+    LOGICAL_GE      reduce using rule 20 (expression -> LPAR expression RPAR .)
+    LOGICAL_EET     reduce using rule 20 (expression -> LPAR expression RPAR .)
+    LOGICAL_NE      reduce using rule 20 (expression -> LPAR expression RPAR .)
+    LESSER_THEN     reduce using rule 20 (expression -> LPAR expression RPAR .)
+    GREATER_THEN    reduce using rule 20 (expression -> LPAR expression RPAR .)
+    LOGICAL_AND     reduce using rule 20 (expression -> LPAR expression RPAR .)
+    LOGICAL_OR      reduce using rule 20 (expression -> LPAR expression RPAR .)
+    COMMA           reduce using rule 20 (expression -> LPAR expression RPAR .)
+    RPAR            reduce using rule 20 (expression -> LPAR expression RPAR .)
+
+
+state 78
+
+    (18) method_call_statement -> IDENTIFIER LPAR argument_list RPAR SEMI_COLON .
+
+    RBRA            reduce using rule 18 (method_call_statement -> IDENTIFIER LPAR argument_list RPAR SEMI_COLON .)
+    ELSE            reduce using rule 18 (method_call_statement -> IDENTIFIER LPAR argument_list RPAR SEMI_COLON .)
+
+
+state 79
+
+    (25) argument_list -> expression COMMA argument_list .
+
+    RPAR            reduce using rule 25 (argument_list -> expression COMMA argument_list .)
+
+
+state 80
+
+    (13) while_statement -> WHILE LPAR expression RPAR statement .
+
+    RBRA            reduce using rule 13 (while_statement -> WHILE LPAR expression RPAR statement .)
+    ELSE            reduce using rule 13 (while_statement -> WHILE LPAR expression RPAR statement .)
+
+
+state 81
+
+    (14) if_statement -> IF LPAR expression RPAR statement . else_statement
+    (15) else_statement -> . ELSE statement
+    (16) else_statement -> . empty
+    (52) empty -> .
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    ELSE            shift and go to state 83
+    RBRA            reduce using rule 52 (empty -> .)
+
+  ! ELSE            [ reduce using rule 52 (empty -> .) ]
+
+    else_statement                 shift and go to state 82
+    empty                          shift and go to state 84
+
+state 82
+
+    (14) if_statement -> IF LPAR expression RPAR statement else_statement .
+
+    RBRA            reduce using rule 14 (if_statement -> IF LPAR expression RPAR statement else_statement .)
+    ELSE            reduce using rule 14 (if_statement -> IF LPAR expression RPAR statement else_statement .)
+
+
+state 83
+
+    (15) else_statement -> ELSE . statement
+    (7) statement -> . while_statement
+    (8) statement -> . if_statement
+    (9) statement -> . assignment_statement
+    (10) statement -> . method_call_statement
+    (11) statement -> . block
+    (13) while_statement -> . WHILE LPAR expression RPAR statement
+    (14) if_statement -> . IF LPAR expression RPAR statement else_statement
+    (17) assignment_statement -> . IDENTIFIER ASSIGNMENT expression SEMI_COLON
+    (18) method_call_statement -> . IDENTIFIER LPAR argument_list RPAR SEMI_COLON
+    (12) block -> . LBRA statement RBRA
+
+    WHILE           shift and go to state 38
+    IF              shift and go to state 39
+    IDENTIFIER      shift and go to state 30
+    LBRA            shift and go to state 31
+
+    statement                      shift and go to state 85
+    while_statement                shift and go to state 33
+    if_statement                   shift and go to state 34
+    assignment_statement           shift and go to state 35
+    method_call_statement          shift and go to state 36
+    block                          shift and go to state 37
+
+state 84
+
+    (16) else_statement -> empty .
+
+    RBRA            reduce using rule 16 (else_statement -> empty .)
+    ELSE            reduce using rule 16 (else_statement -> empty .)
+
+
+state 85
+
+    (15) else_statement -> ELSE statement .
+
+    RBRA            reduce using rule 15 (else_statement -> ELSE statement .)
+    ELSE            reduce using rule 15 (else_statement -> ELSE statement .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 76 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 76 resolved as shift
+WARNING: shift/reduce conflict for MULTIPLE in state 76 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 76 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_LE in state 76 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_GE in state 76 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_EET in state 76 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_NE in state 76 resolved as shift
+WARNING: shift/reduce conflict for LESSER_THEN in state 76 resolved as shift
+WARNING: shift/reduce conflict for GREATER_THEN in state 76 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_AND in state 76 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_OR in state 76 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 81 resolved as shift

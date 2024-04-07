@@ -1,0 +1,62 @@
+Study questions CS 5800
+Sudkamp + Hopcroft + notes
+
+Section 4.4 HMU: minimization of DFA (apply algorithm)
+
+Ch. 6 Sudkamp: properties of regular languages
+- Define: expression graph
+- Conversion: NFA -> regexp (apply)
+- Conversion: reg. grammar <-> NFA (apply)
+- Give three equivalent representations of reg. languages 
+  (bottom of p. 200)
+- Prove that the set of the reg. lang.s closed under:
+  union, concat., Kleene closure, complementation, intersection.
+- Examples/problems on closure properties
+- State and prove the pumping lemma for reg. lang.
+- Problems using the pumping lemma for reg. lang
+- What is a decision problem?
+- Give three decidable problems regarding set operations
+  for regular lang. (state Corol. 6.6.5).
+- Prove that the equivalence problem for DFAs is decidable.
+
+Ch. 7 Sudkamp: PDAs and CFLs
+- Define: standard PDA as a 6-tuple; explain each element,
+  include how the transition maps and give an example
+  of a "standard" transition.
+- Define: acceptance in a PDA (by final state and 
+  empty stack).
+- Computation: [q0,w,lambda] |- ...
+               sequence of configurations
+  Configuration:
+     [state, what's left of the string, stack contents]  
+- Define: language of PDA (using computation notation).
+- Examples of PDAs.
+- Is the nondeterministic PDA more powerful than 
+  a deterministic PDA in general?
+- Explain why there is no deterministic PDA that accepts
+  L = {ww^R | w in {a,b}*}. 
+- What are atomic transitions, atomic PDA?
+- What are extended transitions, extended PDA?
+- Conversions between atomic, standard and extended 
+  transitions and PDAs; show a computation for the same
+  string in the three forms.
+NOT to study: acceptance by final state,
+              acceptance by empty stack.
+- Give a PDA for the language of strings of a-s and b-s
+  with the same number of a-s and b-s 
+  (using bottom-of-the-stack marker).
+- Define Greibach Normal Form (GNF)
+- Convert GNF -> PDA.
+- Computation in PDA and derivation in GNF CFG 
+- (State:) Theorem: a language L is accepted by a PDA
+           <=> L is derived by a CFG
+NOT to study: PDA -> CFG proof
+- State and prove (the pumping property of)
+  the pumping lemma for CFLs.
+- Show that some languages are not CFLs.
+- Show that the set of the CFLs is closed under:
+  union, concatenation, Kleene star.
+- Show that the set of the CFLs is not closed under: 
+  intersection, complementation.
+- Problems for closure properties of CFLs.
+

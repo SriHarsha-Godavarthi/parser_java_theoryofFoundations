@@ -1,0 +1,15 @@
+digraph finite_state_machine {
+	rankdir=LR size="8,5"
+	node [shape=point]
+	qi
+	node [shape=doublecircle]
+	q_accept
+	node [shape=circle]
+	qi -> q0 [label="ε,ε->Z"]
+	q0 -> q0 [label="a,ε->a"]
+	q0 -> q1 [label="c,ε->ε"]
+	q1 -> q1 [label="c,ε->ε"]
+	q1 -> q2 [label="b,a->ε"]
+	q2 -> q2 [label="b,a->ε"]
+	q2 -> q_accept [label="ε,Z->ε"]
+}

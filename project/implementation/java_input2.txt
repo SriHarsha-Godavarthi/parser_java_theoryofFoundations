@@ -1,0 +1,7 @@
+public class Sample{
+    float inex (int x){
+          while ( x < j $ )  {
+            x=y;
+          }
+    }
+}
